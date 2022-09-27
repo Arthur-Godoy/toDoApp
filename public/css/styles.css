@@ -1,0 +1,69 @@
+*{
+    color: rgb(221, 220, 220);
+}
+
+body{
+    background-image: url('../assets/bg-desktop-dark.jpg');
+    background-repeat: repeat-x;
+}
+
+header{
+    padding-top: 70px;
+    margin-bottom: 35px;
+}
+
+header input{
+    background-color: #282a36;
+    border: none;
+    width: 100%;
+}
+
+header input:focus{
+    outline: 1px solid #3d4052;
+}
+
+header button{
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    border: white;
+}
+
+.tasksContainer{
+    border-bottom: 1px solid rgba(70, 70, 70, 0.616);
+    background-color:#282a36 ;
+}
+
+.task{
+    min-height: 60px;
+    border-bottom: 1px solid rgba(70, 70, 70, 0.616);
+}
+
+.title{
+    letter-spacing: 10px;
+}
+
+.bottomMenu{
+    font-size: 11px;
+}
+
+.bottomMenu p{
+    color: rgb(179, 178, 178);
+}
+
+.bottomMenu a{
+    margin-right: 12px;
+    color: rgb(179, 178, 178);
+    text-decoration: none;
+}
+
+.bottomMenu a:hover{
+    color: rgb(255, 255, 255);
+}
+
+.closeBtn{
+    position: absolute;
+    margin-top: -32px;
+    right: 500px;
+}
+
