@@ -7,7 +7,7 @@
         @foreach ($tasks as $task)
             <div class="task">
                 <div class="form-check rounded px-5 py-3 mb-0">
-                    <form action="/mark/{{ $task->id }}" method="POST">
+                    <form action="{{ route('update', ['id' => $task->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
                         @if ($task->state == '1')
@@ -39,7 +39,7 @@
                             </label>
                         @endif
                     </form>
-                    <form action="/delete/{{ $task->id }}" method="POST">
+                    <form action="{{ route('delete', ['id' => $task->id]) }}" method="POST">
                         <div class="d-inline closeBtn"  onclick="">
                             @csrf
                             @method('DELETE')
@@ -74,7 +74,7 @@
             @endswitch
         </div>
     </div>
-    <form action="/deleteAll" method="POST">
+    <form action="{{ route('deleteAll') }}" method="POST">
         @csrf
         @method('DELETE')
         <button class="btn btn-outlined mt-2" style="margin: auto; width: 100%;"><small>Deletar Concluídos</small></button>

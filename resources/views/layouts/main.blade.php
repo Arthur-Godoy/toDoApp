@@ -20,22 +20,19 @@
                         <a class="nav-link d-inline" href="/register">Cadastrar</a>
                     @endguest
                     @auth
-                        <p class="fs-5 ms-2 me-3 d-inline"><ion-icon name="contact"></ion-icon>{{ auth()->user()->name }}</p>
+                        <p class="fs-5 ms-2 me-2 d-inline"><ion-icon name="contact"></ion-icon>{{ auth()->user()->name }}</p>
                         <form action="/logout" method="POST" class="d-inline">
                             @csrf
-                            <a
-                                onclick="event.preventDefault(); this.closest('form').submit();"
-                                class=" fs-5 nav-link d-inline"
-                            >
+                            <button type="submit" class="btn btn-outlined d-inline fs-5 btn-sm">
                                 <ion-icon name="close-circle"></ion-icon>
-                            </a>
+                            </button>
                         </form>
                     @endauth
                 </nav>
             </div>
-            <form action="/create" method="POST">
+            <form action="{{ route('create') }}" method="POST">
                 @csrf
-                <input class="rounded px-5 py-3 shadow-lg" type="text" name="content" placeholder="Criar nova tarefa...">
+                <input class="rounded px-5 py-3 shadow-lg" type="text" name="content" placeholder="Criar nova tarefa..." required>
             </form>
         </div>
     </header>

@@ -13,9 +13,9 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-Route::get('/', [TaskController::class, 'index']);
-Route::post('/create', [TaskController::class, 'store'])->middleware('auth');
-Route::delete('/delete/{id}', [TaskController::class, 'destroy'])->middleware('auth');
-Route::delete('/deleteAll', [TaskController::class, 'destroyAll'])->middleware('auth');
-Route::put('/mark/{id}', [TaskController::class, 'update'])->middleware('auth');
+Route::get('/', [TaskController::class, 'index'])->name('home');
+Route::post('/create', [TaskController::class, 'store'])->name('create')->middleware('auth');
+Route::delete('/delete/{id}', [TaskController::class, 'destroy'])->name('delete')->middleware('auth');
+Route::delete('/deleteAll', [TaskController::class, 'destroyAll'])->name('deleteAll')->middleware('auth');
+Route::put('/mark/{id}', [TaskController::class, 'update'])->name('update')->middleware('auth');
 Route::get('/dashboard', [TaskController::class, 'dashboard']);
