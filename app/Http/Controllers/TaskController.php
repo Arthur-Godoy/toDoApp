@@ -8,23 +8,26 @@ use App\Models\Task;
 class TaskController extends Controller
 {
     public function index(){
-        $order = request('order');
-        switch($order){
-            case(null):
-                $tasks = Task::all();
-                $actives = count(Task::all()->where('state', 0));
-                break;
-            case('actives'):
-                $tasks = Task::all()->where('state', 0);
-                $actives = count($tasks);
-                break;
-            case('concluded'):
-                $tasks = Task::all()->where('state', 1);
-                $actives = 0;
-                break;
+        if(auth()->user()){
+            $user = auth()->user();
+            $order = request('order');
+            switch($order){
+                case(null):
+                    $tasks = Task::all()->where('user_id',$user->id);
+                    $actives = count(Task::all()->where('state', 0));
+                    break;
+                case('actives'):
+                    $tasks = Task::all()->where('state', 0);
+                    $actives = count($tasks);
+                    break;
+                case('concluded'):
+                    $tasks = Task::all()->where('state', 1);
+                    $actives = 0;
+                    break;
+            }
+            return view('welcome', ['tasks' => $tasks, 'actives' => $actives, 'order' => $order, 'user' => $user]);
         }
-
-        return view('welcome', ['tasks' => $tasks, 'actives' => $actives, 'order' => $order]);
+        return view('welcome', ['tasks' => [], 'actives' => 0, 'order' => null]);
     }
 
     public function destroy($id){
@@ -41,6 +44,7 @@ class TaskController extends Controller
         $task = new Task;
         $task->content = $request->content;
         $task->state = false;
+        $task->user_id = auth()->user()->id;
         $task->save();
         return redirect('/');
     }
@@ -54,6 +58,10 @@ class TaskController extends Controller
         }
         $task->update();
 
+        return redirect('/');
+    }
+
+    public function dashboard(){
         return redirect('/');
     }
 }

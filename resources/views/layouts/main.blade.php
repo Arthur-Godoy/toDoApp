@@ -12,7 +12,27 @@
 <body class="bg-dark">
     <header>
         <div class="col-md-4 offset-4">
-            <h1 class="title fw-bold mb-5">TODO</h1>
+            <div class="mt-3 mb-4">
+                <h1 class="title fw-bold d-inline">TODO</h1>
+                <nav class="fw-bold d-inline offset-4 ps-3 ">
+                    @guest
+                        <a class="nav-link d-inline me-2" href="/login">Login</a>
+                        <a class="nav-link d-inline" href="/register">Cadastrar</a>
+                    @endguest
+                    @auth
+                        <p class="fs-5 ms-2 me-3 d-inline"><ion-icon name="contact"></ion-icon>{{ auth()->user()->name }}</p>
+                        <form action="/logout" method="POST" class="d-inline">
+                            @csrf
+                            <a
+                                onclick="event.preventDefault(); this.closest('form').submit();"
+                                class=" fs-5 nav-link d-inline"
+                            >
+                                <ion-icon name="close-circle"></ion-icon>
+                            </a>
+                        </form>
+                    @endauth
+                </nav>
+            </div>
             <form action="/create" method="POST">
                 @csrf
                 <input class="rounded px-5 py-3 shadow-lg" type="text" name="content" placeholder="Criar nova tarefa...">
@@ -22,6 +42,7 @@
     <div class="col-md-4 offset-4">
         @yield('content')
     </div>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/RubaXa/Sortable/Sortable.min.js">
 </body>

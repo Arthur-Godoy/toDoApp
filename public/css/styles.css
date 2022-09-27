@@ -22,6 +22,17 @@ header input:focus{
     outline: 1px solid #3d4052;
 }
 
+header nav{
+    position: relative;
+    top: -8px;
+}
+
+header ion-icon{
+    position: relative;
+    top: 3px;
+    left: -5px;
+}
+
 header button{
     border-radius: 100%;
     width: 20px;

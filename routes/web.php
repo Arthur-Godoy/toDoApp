@@ -14,17 +14,8 @@ use App\Http\Controllers\TaskController;
 */
 
 Route::get('/', [TaskController::class, 'index']);
-Route::post('/create', [TaskController::class, 'store']);
-Route::delete('/delete/{id}', [TaskController::class, 'destroy']);
-Route::delete('/deleteAll', [TaskController::class, 'destroyAll']);
-Route::put('/mark/{id}', [TaskController::class, 'update']);
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+Route::post('/create', [TaskController::class, 'store'])->middleware('auth');
+Route::delete('/delete/{id}', [TaskController::class, 'destroy'])->middleware('auth');
+Route::delete('/deleteAll', [TaskController::class, 'destroyAll'])->middleware('auth');
+Route::put('/mark/{id}', [TaskController::class, 'update'])->middleware('auth');
+Route::get('/dashboard', [TaskController::class, 'dashboard']);
