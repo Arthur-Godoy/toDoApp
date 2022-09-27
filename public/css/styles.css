@@ -40,6 +40,9 @@ header button{
 }
 
 .tasksContainer{
+    overflow: hidden;
+    overflow-wrap: wrap;
+    word-wrap: break-word;
     border-bottom: 1px solid rgba(70, 70, 70, 0.616);
     background-color:#282a36 ;
 }
@@ -74,6 +77,6 @@ header button{
 .closeBtn{
     position: absolute;
     margin-top: -32px;
-    right: 500px;
+    right: 35%;
 }
 

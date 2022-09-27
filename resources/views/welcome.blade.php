@@ -6,7 +6,7 @@
     <div class="shadow-lg tasksContainer rounded">
         @foreach ($tasks as $task)
             <div class="task">
-                <div class="form-check rounded px-5 py-3 mb-0">
+                <div class="form-check rounded px-5 py-3 mb-0 text-break">
                     <form action="{{ route('update', ['id' => $task->id]) }}" method="POST">
                         @csrf
                         @method('PUT')
@@ -21,7 +21,7 @@
                                 name="{{ $task->id }}"
                                 onclick="event.preventDefault(); this.closest('form').submit();"
                             >
-                            <label style=" text-decoration: line-through; color:rgb(163, 163, 163)" class="form-check-label" for="flexRadioDefault1">
+                            <label style=" text-decoration: line-through; color:rgb(163, 163, 163)" class="form-check-label " for="flexRadioDefault1">
                                 {{ $task->content }}
                             </label>
                             @else
@@ -40,7 +40,7 @@
                         @endif
                     </form>
                     <form action="{{ route('delete', ['id' => $task->id]) }}" method="POST">
-                        <div class="d-inline closeBtn"  onclick="">
+                        <div class="d-inline closeBtn">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-outlined" type="submit"><img src="./assets/icon-cross.svg" alt=""></button>
