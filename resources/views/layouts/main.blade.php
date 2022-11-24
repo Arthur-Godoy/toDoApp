@@ -16,8 +16,8 @@
                 <h1 class="title fw-bold d-inline">TODO</h1>
                 <nav class="fw-bold d-inline offset-4 ps-3 ">
                     @guest
-                        <a class="nav-link d-inline me-2" href="/login">Login</a>
-                        <a class="nav-link d-inline" href="/register">Cadastrar</a>
+                        <a class="nav-link d-inline me-2" href="{{ route('login') }}">Login</a>
+                        <a class="nav-link d-inline" href="{{ route('register') }}">Cadastrar</a>
                     @endguest
                     @auth
                         <p class="fs-5 ms-2 me-2 d-inline"><ion-icon name="contact"></ion-icon>{{ auth()->user()->name }}</p>
