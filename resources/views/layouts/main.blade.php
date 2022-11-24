@@ -11,7 +11,7 @@
 </head>
 <body class="bg-dark">
     <header>
-        <div class="col-md-4 offset-4">
+        <div class="col-md-4 offset-md-4">
             <div class="mt-3 mb-4">
                 <h1 class="title fw-bold d-inline">TODO</h1>
                 <nav class="fw-bold d-inline offset-4 ps-3 ">
